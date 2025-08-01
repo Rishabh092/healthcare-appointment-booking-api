@@ -1,0 +1,128 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Healthcare Appointment Booking API",
+        "description": "API documentation for the Healthcare Appointment Booking system",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/appointments": {
+            "post": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "Book an appointment",
+                "operationId": "7a96b0e8e45ef01954b4042d7c29e8e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "healthcare_professional_id",
+                                    "appointment_date"
+                                ],
+                                "properties": {
+                                    "healthcare_professional_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "appointment_date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "example": "2025-08-01T14:30:00Z"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Appointment booked successfully"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "Register a new user",
+                "operationId": "b960cc53b917336ce35dd401509b66dd",
+                "requestBody": {},
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "summary": "User login",
+                "operationId": "a676b886dbf66d0c43e2868b16990635",
+                "requestBody": {},
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/api/professionals": {
+            "get": {
+                "tags": [
+                    "Healthcare Professionals"
+                ],
+                "summary": "List all healthcare professionals",
+                "description": "HealthcareProfessionalController\n\nHandles API requests related to healthcare professionals.",
+                "operationId": "4b18b72b962ee8930d3452b2f05c6198",
+                "responses": {
+                    "200": {
+                        "description": "List retrieved successfully"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UserResource": {
+                "title": "User Resource",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "john@example.com"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Appointments",
+            "description": "Appointments"
+        },
+        {
+            "name": "Healthcare Professionals",
+            "description": "Healthcare Professionals"
+        }
+    ]
+}
