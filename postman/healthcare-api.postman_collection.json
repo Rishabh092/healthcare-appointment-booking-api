@@ -1,0 +1,155 @@
+{
+  "info": {
+    "name": "Healthcare Appointment Booking API",
+    "description": "Postman collection to test all routes of the Healthcare Appointment Booking API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "register"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "login"]
+        }
+      }
+    },
+    {
+      "name": "Auth - Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost/api/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "logout"]
+        }
+      }
+    },
+    {
+      "name": "Get Healthcare Professionals",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost/api/healthcare-professionals",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "healthcare-professionals"]
+        }
+      }
+    },
+    {
+      "name": "Book Appointment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"healthcare_professional_id\": 1,\n  \"appointment_time\": \"2025-08-10 10:00:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/api/appointments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "appointments"]
+        }
+      }
+    },
+    {
+      "name": "Get Appointments",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost/api/appointments",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "appointments"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Appointment",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost/api/appointments/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["api", "appointments", "1"]
+        }
+      }
+    }
+  ]
+}
